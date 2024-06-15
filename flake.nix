@@ -31,6 +31,17 @@
     inputs.snowfall-lib.mkFlake {
       # You must provide our flake inputs to Snowfall Lib.
       inherit inputs;
+      channels-config = {
+        # Allow unfree pkgs.
+        allowUnfree = true;
+        # permittedInsecurePackages = [
+        #   "electron-25.9.0"
+        # ];
+      };
+      overlays = with inputs; [
+        # snowfall-lib.overlays.default
+        sops-nix.overlays.default
+      ];
 
       systems.modules.nixos = with inputs; [
         jovian.nixosModules.default
