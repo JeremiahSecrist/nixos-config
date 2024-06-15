@@ -39,7 +39,6 @@
         # ];
       };
       overlays = with inputs; [
-        # snowfall-lib.overlays.default
         sops-nix.overlays.default
       ];
 
