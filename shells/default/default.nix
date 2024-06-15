@@ -16,8 +16,8 @@
 mkShell {
   # Create your shell
   packages = with pkgs; [
-    fh 
-    nh 
+    fh
+    nh
     nixpkgs-fmt
   ];
 }
