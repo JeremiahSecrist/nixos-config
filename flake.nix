@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.637149.tar.gz";
     nixos-hardware.url = "https://flakehub.com/f/NixOS/nixos-hardware/0.1.1715.tar.gz";
     home-manager = {
       url = "https://flakehub.com/f/nix-community/home-manager/0.2311.3186.tar.gz";
@@ -10,6 +10,7 @@
       url = "https://flakehub.com/f/snowfallorg/lib/3.0.3.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sops-nix.url = "https://flakehub.com/f/Mic92/sops-nix/0.1.810.tar.gz";
     disko = {
       url = "https://flakehub.com/f/nix-community/disko/1.3.0.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -32,7 +33,6 @@
       inherit inputs;
 
       systems.modules.nixos = with inputs; [
-        agenix.nixosModules.default
         jovian.nixosModules.default
         nix-index-database.nixosModules.nix-index
         impermanence.nixosModules.impermanence
