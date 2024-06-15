@@ -3,7 +3,7 @@
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.637149.tar.gz";
     nixos-hardware.url = "https://flakehub.com/f/NixOS/nixos-hardware/0.1.1715.tar.gz";
     home-manager = {
-      url = "https://flakehub.com/f/nix-community/home-manager/0.2311.3186.tar.gz";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     snowfall-lib = {
