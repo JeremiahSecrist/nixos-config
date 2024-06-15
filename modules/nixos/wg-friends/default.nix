@@ -31,7 +31,7 @@ let
 in
 {
   options.internal.asWireguard.enable = mkEnableOption "Enables mesh network from computerClub";
-  config = mkIf  {
+  config = mkIf config.internal.asWiregaurd.enable {
 
     networking.extraHosts = ''
       172.16.2.3 codex.cypress.local

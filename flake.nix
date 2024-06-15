@@ -41,7 +41,7 @@
       overlays = with inputs; [
         sops-nix.overlays.default
       ];
-
+      
       systems.modules.nixos = with inputs; [
         jovian.nixosModules.default
         nix-index-database.nixosModules.nix-index
