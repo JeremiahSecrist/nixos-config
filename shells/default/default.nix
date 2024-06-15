@@ -20,6 +20,5 @@ mkShell {
     nh
     nixpkgs-fmt
     inputs.disko.packages.x86_64-linux.disko
-    internal.nixt
   ];
 }
