@@ -26,9 +26,11 @@
 }:
 {
   internal = {
+
     roles = {
       gaming.enable = true;
     };
+    virtualization.docker.enable = true;
     desktop.gnome.enable = true;
     networking.asWireguard.enable = true;
     disko.impermanence = {
@@ -53,8 +55,7 @@
       password = "$y$j9T$5FxOeqdICm5REo/NMm9pM1$Tt.kY2OP05CLo4y1nOjxx/e4ObzsQILZuJRu4xQlrM/";
     };
   };
-  virtualisation.docker.enable = true;
-  users.users.sky.extraGroups = [ "docker" ];
+
 
 
   environment.systemPackages = with pkgs; [
@@ -62,27 +63,11 @@
     age-plugin-yubikey
   ];
 
-  services.xserver.enable = true;
-  services.switcherooControl.enable = lib.mkIf (builtins.elem "hello" config.system.nixos.tags) true;
 
-  # services.xserver.displayManager.defaultSession = "plasma";
-  programs.command-not-found.enable = false;
-  programs.nix-index-database.comma.enable = true;
-  services.tailscale.enable = true;
-  # Configure keymap in X11
-  services.xserver = {
-    xkb = {
-      layout = "us";
-      variant = "";
-    };
-  };
-
-  hardware.enableAllFirmware = true;
 
   services = {
-
+    tailscale.enable = true;
     flatpak.enable = true;
-    preload.enable = true;
   };
   programs = {
     ssh.extraConfig = ''
@@ -91,16 +76,8 @@
       StrictHostKeyChecking=accept-new
     '';
     zsh.enable = true;
-    noisetorch.enable = true;
-    # steam = {
-    #   enable = true;
-    #   package = pkgs.steam.override {
-    #   # extraPkgs = pkgs:
-    #     # with pkgs; [
-    #     #   gamescope
-    #     # ];
-    # };
-    # };
+    # noisetorch.enable = true;
+
 
   };
   networking = {

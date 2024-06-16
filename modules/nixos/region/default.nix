@@ -24,6 +24,13 @@ in
       DefaultTimeoutStopSec=10s
     '';
 
+    services.xserver = {
+      xkb = {
+        layout = "us";
+        variant = "";
+      };
+    };
+
     time.timeZone = mkDefault cfg.timeZone;
 
     i18n.defaultLocale = "en_US.UTF-8";

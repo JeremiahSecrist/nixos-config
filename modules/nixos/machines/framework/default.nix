@@ -69,6 +69,7 @@ in
         hardware.bolt.enable = true;
       };
       hardware = {
+        enableAllFirmware = true;
         bluetooth.enable = true;
         opengl = {
           enable = true;

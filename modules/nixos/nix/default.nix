@@ -25,6 +25,9 @@ in
     # environment = {
     #   etc."current-config".source = inputs.self.outPath;
     # };
+    programs.command-not-found.enable = false;
+    programs.nix-index-database.comma.enable = true;
+
     nixpkgs.config = {
       allowUnfree = cfg.allowUnfree;
       # contentAddressedByDefault = true;
