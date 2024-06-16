@@ -29,7 +29,12 @@ in
       allowUnfree = cfg.allowUnfree;
       # contentAddressedByDefault = true;
     };
+
     nix = {
+      registry = {
+        self.flake = inputs.self;
+        nixpkgs.flake = inputs.nixpkgs;
+      };
       distributedBuilds = true;
       sshServe.enable = cfg.isBuilder;
       package = pkgs.nixFlakes;
@@ -38,7 +43,6 @@ in
         experimental-features = nix-command flakes ca-derivations
       '';
       nixPath = [ "nixpkgs=flake:nixpkgs" ];
-      registry.nixpkgs.flake = inputs.nixpkgs;
       gc = {
         automatic = true;
         dates = "weekly";
