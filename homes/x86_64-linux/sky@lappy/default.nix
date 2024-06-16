@@ -187,6 +187,7 @@ in
       };
 
       initExtra = ''
+        source ${pkgs.nh}share/zsh/site-functions/_nh
         function set_win_title(){
             echo -ne "\033]0; $(basename "$PWD") \007"
         }
