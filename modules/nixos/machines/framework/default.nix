@@ -3,18 +3,19 @@
 , pkgs
 , modulesPath
 , inputs
+, namespace
 , ...
 }:
 let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.internal.machines.framework;
+  cfg = config.${namespace}.machines.framework;
 in
 {
   imports = [
     inputs.nixos-hardware.nixosModules.framework-13-7040-amd
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
-  options.internal.machines.framework.enable = mkEnableOption "used for framework laptop";
+  options.${namespace}.machines.framework.enable = mkEnableOption "used for framework laptop";
   config = mkIf cfg.enable {
     networking = {
       networkmanager.wifi.backend = "iwd";

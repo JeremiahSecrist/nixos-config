@@ -26,7 +26,7 @@ in
       ];
     });
   });
-
+  tpm2-pkcs11 = prev.tpm2-pkcs11.override { fapiSupport = false; };
   patch-discord = prev.discord.overrideAttrs (previousAttrs: {
     postInstall =
       previousAttrs.postInstall

@@ -1,14 +1,15 @@
 { config
 , pkgs
 , lib
+, namespace
 , ...
 }:
 let
   # opt = options.custom.desktop.gnome;
-  cfg = config.local.desktop.gnome;
+  cfg = config.${namespace}.desktop.gnome;
 in
 {
-  options.local.desktop.gnome = {
+  options.${namespace}.desktop.gnome = {
     enable = lib.mkEnableOption "This enables gnome desktop";
   };
   config = lib.mkIf cfg.enable {
