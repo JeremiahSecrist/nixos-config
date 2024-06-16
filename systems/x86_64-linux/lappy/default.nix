@@ -26,9 +26,11 @@
 }:
 {
   internal = {
-
     roles = {
       gaming.enable = true;
+    };
+    programs = {
+      nh.enable = true;
     };
     virtualization.docker.enable = true;
     desktop.gnome.enable = true;
