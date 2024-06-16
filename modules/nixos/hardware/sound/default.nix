@@ -10,7 +10,7 @@ in
 {
   options.${namespace}.hardware.sound.enable = mkEnableOption "enables usual sound configurations";
   config = mkIf cfg.enable {
-    sound.enable = true;
+    # sound.enable = true;
     hardware.pulseaudio.enable = false;
     security.rtkit.enable = true;
     services = {
