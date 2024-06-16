@@ -115,6 +115,7 @@ in
   programs = {
     vscode.enable = true;
     helix.enable = true;
+    nix-index.enable = true;
     zoxide = {
       enable = true;
       enableZshIntegration = true;
