@@ -42,7 +42,7 @@
       overlays = with inputs; [
         sops-nix.overlays.default
       ];
-      
+
       systems.modules.nixos = with inputs; [
         # jovian.nixosModules.default
         nix-index-database.nixosModules.nix-index
@@ -52,6 +52,7 @@
       ];
       homes.modules = with inputs; [
         # my-input.homeModules.my-module
+        nix-index-database.hmModules.nix-index
       ];
       # The `src` must be the root of the flake. See configuration
       # in the next section for information on how you can move your
