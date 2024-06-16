@@ -28,7 +28,6 @@
   internal = {
     roles = {
       gaming.enable = true;
-
     };
     desktop.gnome.enable = true;
     networking.asWireguard.enable = true;
