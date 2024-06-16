@@ -43,6 +43,7 @@ in
   #   ./wiregaurd.nix
   # ];
   internal = {
+    networking.asWireguard.enable = true;
     disko.impermanence = {
       enable = true;
       swapsize = "8G";
@@ -67,19 +68,6 @@ in
   };
   virtualisation.docker.enable = true;
   users.users.sky.extraGroups = [ "docker" ];
-  # jovian = {
-  #   steam = {
-  #     enable = true;
-  #     # desktopSession = config.services.xserver.displayManager.defaultSession;
-  #   };
-  #   decky-loader = {
-  #     enable = true;
-  #     stateDir = "/persist/system/var/lib/decky-loader";
-  #   };
-  #   # hardware = {
-  #   #   has.amd.gpu = true;
-  #   # };
-  # };
   systemd.services.bctl = {
     enable = config.internal.disko.impermanence.enable;
     wantedBy = [ "multi-user.target" ];
@@ -98,20 +86,7 @@ in
       libvdpau-va-gl
     ];
   };
-  # boot.initrd.extraUtilsCommands = lib.mkIf (!config.boot.initrd.systemd.enable) ''
-  #    copy_bin_and_libs
-  #    cp -pv ${pkgs.glibc.out}/lib/libnss_files.so.* $out/lib
-  #  '';
-  # boot.initrd.postDeviceCommands = lib.mkAfter ''
-  #   /bin/brightnessctl set 10%
-  # '';
-  services.gnome.gnome-keyring.enable = lib.mkForce false;
-  # hardware.opengl.extraPackages = [pkgs.vaapiVdpau];
-  # programs.ssh.startAgent = false;
-  # services.yubikey-agent.enable = true;
-  # programs.gnupg.agent.enable = true;
-  # hardware.gpgSmartcards.enable = true;
-  # security = { pkcs11Providers = [ "${pkgs.opensc}/lib/opensc-pkcs11.so" ]; };
+
   system.nixos.tags = [ "zramSwap" ];
 
   zramSwap.enable = lib.mkIf (builtins.elem "zramSwap" config.system.nixos.tags) true;

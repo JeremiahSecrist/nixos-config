@@ -24,15 +24,17 @@
   config
 , ...
 }:
-with lib.internal;
+# with lib.internal;
 let
   pubkey = "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBA9i9HoP7X8Ufzz8rAaP7Nl3UOMZxQHMrsnA5aEQfpTyIQ1qW68jJ4jGK5V6Wv27MMc3czDU1qfFWIbGEWurUHQ=";
   myPubKeyFile = "${pkgs.writeText "mykey.pub" "${pubkey}\n"}";
 in
 {
   # Your configuration.
-  snowfallorg.user.enable = true;
-
+  snowfallorg.user = {
+    enable = true;
+    name = "sky";
+  };
   home = {
     stateVersion = "24.05";
     file = {
