@@ -71,7 +71,6 @@ in
       protonvpn-gui
     ];
   };
-  services.
   services.gpg-agent = {
     # enable = true;
     enableSshSupport = true;

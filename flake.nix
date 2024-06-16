@@ -43,7 +43,7 @@
       ];
       
       systems.modules.nixos = with inputs; [
-        jovian.nixosModules.default
+        # jovian.nixosModules.default
         nix-index-database.nixosModules.nix-index
         impermanence.nixosModules.impermanence
         home-manager.nixosModules.home-manager

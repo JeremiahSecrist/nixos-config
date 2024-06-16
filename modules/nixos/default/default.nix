@@ -10,10 +10,10 @@ in
 {
   options.${namespace}.list = mkOption {
     type = with types; listOf str;
-    default = [ ];
+    default = [ "" ];
   };
-  config = mkIf (builtins.elm "default" config.${namespace}.list) {
-    systemd.services.bctl = mkIf builtins.elm "laptop" config.internal.list {
+  config = mkIf (builtins.elem "default" config.${namespace}.list) {
+    systemd.services.bctl = mkIf builtins.elem "laptop" config.internal.list {
       enable = config.local.impermanence.enable;
       wantedBy = [ "multi-user.target" ];
       after = [ "multi-user.target" ];
