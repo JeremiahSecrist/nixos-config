@@ -64,7 +64,6 @@ in
       git
       gnupg
       tldr
-      nixfmt
       protonvpn-cli
       yubikey-personalization-gui
       yubioath-flutter
@@ -215,7 +214,7 @@ in
       completionInit = ''
         compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION" && autoload -U compinit && zstyle ':completion:*' menu select && zmodload zsh/complist && compinit && _comp_options+=(globdots)
       '';
-      enableAutosuggestions = true;
+      autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
       autocd = true;
       plugins = [

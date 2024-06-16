@@ -1,5 +1,6 @@
 {
   inputs = {
+    agenix.url = "https://flakehub.com/f/ryantm/agenix/0.15.0.tar.gz";
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.637149.tar.gz";
     nixos-hardware.url = "https://flakehub.com/f/NixOS/nixos-hardware/0.1.1715.tar.gz";
     home-manager = {

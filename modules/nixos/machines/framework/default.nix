@@ -58,7 +58,7 @@ in
     };
     # enable proper mouse usage on xorg.
     services = {
-      xserver.libinput.enable = true;
+      libinput.enable = true;
       fstrim.enable = true;
       system76-scheduler.settings.cfsProfiles.enable = true;
       fwupd.enable = true;

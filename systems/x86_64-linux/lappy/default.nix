@@ -81,7 +81,7 @@ in
   #   # };
   # };
   systemd.services.bctl = {
-    enable = config.local.impermanence.enable;
+    enable = config.internal.disko.impermanence.enable;
     wantedBy = [ "multi-user.target" ];
     after = [ "multi-user.target" ];
     serviceConfig = {
