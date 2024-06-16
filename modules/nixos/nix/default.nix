@@ -28,11 +28,6 @@ in
     programs.command-not-found.enable = false;
     programs.nix-index-database.comma.enable = true;
 
-    nixpkgs.config = {
-      allowUnfree = cfg.allowUnfree;
-      # contentAddressedByDefault = true;
-    };
-
     nix = {
       registry = {
         self.flake = inputs.self;
@@ -46,11 +41,6 @@ in
         experimental-features = nix-command flakes ca-derivations
       '';
       nixPath = [ "nixpkgs=flake:nixpkgs" ];
-      gc = {
-        automatic = true;
-        dates = "weekly";
-        options = "--delete-older-than 7d";
-      };
       settings = {
         flake-registry = builtins.toFile "empty-flake-registry.json" ''{"flakes":[],"version":2}'';
         auto-optimise-store = true;
