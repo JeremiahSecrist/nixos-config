@@ -15,24 +15,25 @@ in
   config = lib.mkIf cfg.enable {
     services = {
       gnome.gnome-keyring.enable = true;
-      # gnome.gnome-settings-daemon.enable = true;
-      # gnome.gnome-initial-setup.enable = true;
+      displayManager.defaultSession = lib.mkForce "gnome";
+      libinput.enable = true;
       xserver = {
         enable = true;
-        layout = "us";
-        xkbVariant = "";
+        xkb = {
+          variant = "";
+          layout = "us";
+        };
         displayManager = {
           gdm = {
             enable = true;
             wayland = true;
           };
           # desktopSession = "gnome";
-          defaultSession = lib.mkForce "gnome";
+
         };
         desktopManager = {
           gnome.enable = lib.mkDefault true;
         };
-        libinput.enable = true;
       };
       udev.packages = [ pkgs.yubikey-personalization pkgs.gnome3.gnome-settings-daemon ];
     };
