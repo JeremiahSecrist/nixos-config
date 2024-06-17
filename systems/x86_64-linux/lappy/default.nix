@@ -58,7 +58,12 @@
     };
   };
 
-
+  topology.self.interfaces.wg0 = {
+    addresses = [ "172.16.2.42" ];
+    network = "computerClub"; # Use the network we define below
+    virtual = true; # doesn't change the immediate render yet, but makes the network-centric view a little more readable
+    type = "wireguard"; # changes the icon
+  };
 
   environment.systemPackages = with pkgs; [
     inputs.agenix.packages.x86_64-linux.default
