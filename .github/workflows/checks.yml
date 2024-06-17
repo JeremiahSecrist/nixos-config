@@ -1,0 +1,23 @@
+name: "Nix Flake Checks"
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+    name: Run Checks
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/magic-nix-cache-action@main
+      - name: DetSys Flake Checks
+        uses: DeterminateSystems/flake-checker-action@v4
+      - name: Nix Flake Check
+        run: nix flake check
