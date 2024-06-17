@@ -24,6 +24,7 @@
     wg-friends = {
       url = "github:the-computer-club/automous-zones";
     };
+    nix-topology.url = "github:oddlama/nix-topology";
     impermanence = {
       url = "https://flakehub.com/f/nix-community/impermanence/0.1.128.tar.gz";
     };
@@ -33,14 +34,11 @@
       # You must provide our flake inputs to Snowfall Lib.
       inherit inputs;
       channels-config = {
-        # Allow unfree pkgs.
         allowUnfree = true;
-        # permittedInsecurePackages = [
-        #   "electron-25.9.0"
-        # ];
       };
       overlays = with inputs; [
         sops-nix.overlays.default
+        nix-topology.overlays.default
       ];
 
       systems.modules.nixos = with inputs; [
@@ -49,11 +47,21 @@
         impermanence.nixosModules.impermanence
         home-manager.nixosModules.home-manager
         disko.nixosModules.disko
+        nix-topology.nixosModules.default
       ];
       homes.modules = with inputs; [
         # my-input.homeModules.my-module
         nix-index-database.hmModules.nix-index
       ];
+      outputs-builder = channels: {
+        topology = import inputs.nix-topology {
+          pkgs = channels.nixpkgs;
+          modules = [
+            { inherit (inputs.self) nixosConfigurations; }
+            ./topology.nix
+          ];
+        };
+      };
       # The `src` must be the root of the flake. See configuration
       # in the next section for information on how you can move your
       # Nix files to a separate directory.
