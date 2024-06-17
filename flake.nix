@@ -1,22 +1,31 @@
 {
   inputs = {
-    agenix.url = "https://flakehub.com/f/ryantm/agenix/0.15.0.tar.gz";
+    agenix = {
+      url = "https://flakehub.com/f/ryantm/agenix/0.15.0.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.637149.tar.gz";
-    nixos-hardware.url = "https://flakehub.com/f/NixOS/nixos-hardware/0.1.1715.tar.gz";
+    nixos-hardware.url = "https://flakehub.com/f/NixOS/nixos-hardware/0.1.*.tar.gz";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     snowfall-lib = {
-      url = "https://flakehub.com/f/snowfallorg/lib/3.0.3.tar.gz";
+      url = "https://flakehub.com/f/snowfallorg/lib/3.*.*.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    sops-nix.url = "https://flakehub.com/f/Mic92/sops-nix/0.1.810.tar.gz";
+    sops-nix = {
+      url = "https://flakehub.com/f/Mic92/sops-nix/0.1.*.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     disko = {
-      url = "https://flakehub.com/f/nix-community/disko/1.3.0.tar.gz";
+      url = "https://flakehub.com/f/nix-community/disko/1.3.*.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+    vscode-extensions = {
+      url = "github:nix-community/nix-vscode-extensions";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-index-database = {
       url = "github:Mic92/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
