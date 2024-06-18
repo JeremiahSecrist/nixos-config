@@ -114,7 +114,7 @@ in
               };
             };
             swap = {
-              size = cfg.swapSize;
+              size = cfg.swapsize;
               content = {
                 type = "swap";
                 resumeDevice = true;
