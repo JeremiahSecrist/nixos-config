@@ -84,7 +84,7 @@ in
         };
       };
       # networking.interfaces.eht0.useDHCP = lib.mkForce true;
-      nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+      # nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
       hardware.cpu.amd.updateMicrocode = true;
 
       systemd.services.bctl = {

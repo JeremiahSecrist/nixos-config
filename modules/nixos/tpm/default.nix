@@ -18,11 +18,11 @@ in
 {
   options.${namespace}.tmp.enable = mkEnableOption "a";
   config = mkIf cfg.enable {
-    nixpkgs.overlays = [
-      (final: prev: {
-        tpm2-pkcs11 = prev.tpm2-pkcs11.override { fapiSupport = false; };
-      })
-    ];
+    # nixpkgs.overlays = [
+    #   (final: prev: {
+    #     tpm2-pkcs11 = prev.tpm2-pkcs11.override { fapiSupport = false; };
+    #   })
+    # ];
     services.pcscd.enable = true;
     programs.ssh.startAgent = true;
     programs.ssh.agentPKCS11Whitelist = "${pkgs.tpm2-pkcs11}/lib/libtpm2_pkcs11*";
