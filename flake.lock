@@ -300,6 +300,21 @@
         "url": "https://flakehub.com/f/nix-community/impermanence/0.1.128.tar.gz"
       }
     },
+    "madness": {
+      "locked": {
+        "lastModified": 1719409722,
+        "narHash": "sha256-YZUuvEQZQu+M2VzhQc7aZ8Vo6+sv1yrPlqhpy2/jYeU=",
+        "owner": "antithesishq",
+        "repo": "madness",
+        "rev": "f589c77dfcf1dfdc96682c1ebd097c71f34e1b76",
+        "type": "github"
+      },
+      "original": {
+        "owner": "antithesishq",
+        "repo": "madness",
+        "type": "github"
+      }
+    },
     "nix-index-database": {
       "inputs": {
         "nixpkgs": [
@@ -343,12 +358,12 @@
     },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1718548414,
-        "narHash": "sha256-1obyIuQPR/Kq1j5/i/5EuAfQrDwjYnjCDG8iLtXmBhQ=",
-        "rev": "cde8f7e11f036160b0fd6a9e07dc4c8e4061cf06",
-        "revCount": 1719,
+        "lastModified": 1720429258,
+        "narHash": "sha256-d6JI5IgJ1xdrk7DvYVx7y8ijcYz5I1nhCwOiDP6cq00=",
+        "rev": "72d3c007024ce47d838bb38693c8773812f54bf2",
+        "revCount": 1773,
         "type": "tarball",
-        "url": "https://api.flakehub.com/f/pinned/NixOS/nixos-hardware/0.1.1719%2Brev-cde8f7e11f036160b0fd6a9e07dc4c8e4061cf06/01902178-7b13-770c-9cd9-7e047925f3b0/source.tar.gz"
+        "url": "https://api.flakehub.com/f/pinned/NixOS/nixos-hardware/0.1.1773%2Brev-72d3c007024ce47d838bb38693c8773812f54bf2/01909369-8a10-7b18-9aaf-63d881fbb8a5/source.tar.gz"
       },
       "original": {
         "type": "tarball",
@@ -405,12 +420,12 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1717974879,
-        "narHash": "sha256-GTO3C88+5DX171F/gVS3Qga/hOs/eRMxPFpiHq2t+D8=",
-        "rev": "c7b821ba2e1e635ba5a76d299af62821cbcb09f3",
-        "revCount": 637149,
+        "lastModified": 1720031269,
+        "narHash": "sha256-rwz8NJZV+387rnWpTYcXaRNvzUSnnF9aHONoJIYmiUQ=",
+        "rev": "9f4128e00b0ae8ec65918efeba59db998750ead6",
+        "revCount": 647193,
         "type": "tarball",
-        "url": "https://api.flakehub.com/f/pinned/NixOS/nixpkgs/0.1.637149%2Brev-c7b821ba2e1e635ba5a76d299af62821cbcb09f3/01900650-b12e-73f5-9410-f6d68ed2d4cb/source.tar.gz"
+        "url": "https://api.flakehub.com/f/pinned/NixOS/nixpkgs/0.1.647193%2Brev-9f4128e00b0ae8ec65918efeba59db998750ead6/01907ed2-641e-7b86-900e-5841ef5672b6/source.tar.gz"
       },
       "original": {
         "type": "tarball",
@@ -451,6 +466,7 @@
         "disko": "disko",
         "home-manager": "home-manager_2",
         "impermanence": "impermanence",
+        "madness": "madness",
         "nix-index-database": "nix-index-database",
         "nix-topology": "nix-topology",
         "nixos-hardware": "nixos-hardware",
@@ -458,7 +474,8 @@
         "snowfall-lib": "snowfall-lib",
         "sops-nix": "sops-nix",
         "vscode-extensions": "vscode-extensions",
-        "wg-friends": "wg-friends"
+        "wg-friends": "wg-friends",
+        "wp4nix": "wp4nix"
       }
     },
     "snowfall-lib": {
@@ -597,6 +614,23 @@
         "owner": "the-computer-club",
         "repo": "automous-zones",
         "type": "github"
+      }
+    },
+    "wp4nix": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1719018063,
+        "narHash": "sha256-qPZd7Y55rc7HWK7OMjdjVNudsgpO5V99e9UG/1lf17g=",
+        "ref": "master",
+        "rev": "3e976dcb55ce8eb433c88aebbd0b5fca8b948819",
+        "revCount": 1479,
+        "type": "git",
+        "url": "https://git.helsinki.tools/helsinki-systems/wp4nix"
+      },
+      "original": {
+        "ref": "master",
+        "type": "git",
+        "url": "https://git.helsinki.tools/helsinki-systems/wp4nix"
       }
     }
   },

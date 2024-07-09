@@ -25,6 +25,13 @@
 , ...
 }:
 {
+  hardware.openrazer = {
+    enable = true;
+    users = [ "sky" ];
+  };
+
+  users.users.sky.packages = [ pkgs.polychromatic ];
+  madness.enable = true;
   internal = {
     roles = {
       gaming.enable = true;
@@ -63,6 +70,11 @@
     network = "computerClub"; # Use the network we define below
     virtual = true; # doesn't change the immediate render yet, but makes the network-centric view a little more readable
     type = "wireguard"; # changes the icon
+  };
+  services.wordpress.sites."localhost" = {
+    plugins = {
+      inherit (pkgs.internal) wpgraphql;
+    };
   };
 
   environment.systemPackages = with pkgs; [

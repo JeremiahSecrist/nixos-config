@@ -49,8 +49,10 @@ in
       DIRENV_LOG_FORMAT = "";
     };
     packages = with pkgs; [
+
       bambu-studio
       internal.tabby
+      internal.waveterm
       patch-discord
       vesktop
       oterm
@@ -70,6 +72,7 @@ in
       yubikey-personalization-gui
       yubioath-flutter
       protonvpn-gui
+      internal.slint-calc
     ];
   };
   services.gpg-agent = {
@@ -187,7 +190,7 @@ in
       };
 
       initExtra = ''
-        source ${pkgs.nh}share/zsh/site-functions/_nh
+        source ${pkgs.nh}/share/zsh/site-functions/_nh
         function set_win_title(){
             echo -ne "\033]0; $(basename "$PWD") \007"
         }

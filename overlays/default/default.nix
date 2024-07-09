@@ -1,4 +1,4 @@
-{ ... }:
+{ inputs, ... }:
 (final: prev:
 let
   binaryName = "Discord";
@@ -18,6 +18,9 @@ in
   vesktop = (prev.vesktop.override {
     withSystemVencord = false;
   });
+
+
+
 
   gnome = prev.gnome.overrideScope (gfinal: gprev: {
     gnome-keyring = gprev.gnome-keyring.overrideAttrs (oldAttrs: {
