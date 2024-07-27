@@ -4,7 +4,11 @@
       url = "https://flakehub.com/f/ryantm/agenix/0.15.0.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    madness.url ="github:antithesishq/madness";
+    nixos-cosmic = {
+      url = "github:lilyinstarlight/nixos-cosmic";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    madness.url = "github:antithesishq/madness";
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.637149.tar.gz";
     nixos-hardware.url = "https://flakehub.com/f/NixOS/nixos-hardware/0.1.*.tar.gz";
     home-manager = {
@@ -47,10 +51,9 @@
     inputs.snowfall-lib.mkFlake {
       # You must provide our flake inputs to Snowfall Lib.
       inherit inputs;
-      channels-config =
-        {
-          allowUnfree = true;
-        };
+      channels-config = {
+        allowUnfree = true;
+      };
       overlays = with inputs; [
         sops-nix.overlays.default
         nix-topology.overlays.default
@@ -58,6 +61,7 @@
 
       systems.modules.nixos = with inputs; [
         # jovian.nixosModules.default
+        nixos-cosmic.nixosModules.default
         madness.nixosModules.madness
         nix-index-database.nixosModules.nix-index
         impermanence.nixosModules.impermanence

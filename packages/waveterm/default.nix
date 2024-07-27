@@ -1,7 +1,9 @@
 { fetchurl
 , appimageTools
 , libsecret
-}: appimageTools.wrapType2 rec {
+,
+}:
+appimageTools.wrapType2 rec {
   name = "waveterm";
   version = "0.7.6";
   src = fetchurl {
@@ -9,5 +11,4 @@
     hash = "sha256-JacFG2jBhLvl+hMkHQG+VfKoDJd1cgU2S3gkloSeh5A=";
   };
   extraPkgs = pkgs: with pkgs; [ libsecret ];
-
 }

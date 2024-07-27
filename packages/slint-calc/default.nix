@@ -6,7 +6,9 @@
 , wayland
 , pkg-config
 , openssl
-}: rustPlatform.buildRustPackage {
+,
+}:
+rustPlatform.buildRustPackage {
   name = "slint-cal";
   src = fetchFromGitHub {
     owner = "Simcra";
@@ -24,7 +26,7 @@
     openssl
   ];
 
-  buildInputs= [
+  buildInputs = [
     libxkbcommon
     fontconfig
 

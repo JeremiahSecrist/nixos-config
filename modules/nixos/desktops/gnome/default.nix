@@ -11,6 +11,7 @@ in
 {
   options.${namespace}.desktop.gnome = {
     enable = lib.mkEnableOption "This enables gnome desktop";
+    xr = lib.mkEnableOption "enables xr driver";
   };
   config = lib.mkIf cfg.enable {
     services = {
@@ -29,7 +30,6 @@ in
             wayland = true;
           };
           # desktopSession = "gnome";
-
         };
         desktopManager = {
           gnome.enable = lib.mkDefault true;
@@ -37,6 +37,7 @@ in
       };
       udev.packages = [ pkgs.yubikey-personalization pkgs.gnome3.gnome-settings-daemon ];
     };
+    services.fprintd.enable = false;
 
     # # exclude the following packages from the default installation
     # environment.gnome.excludePackages =

@@ -19,7 +19,6 @@
 , # A boolean to determine whether this home is a virtual target using nixos-generators.
   host
 , # The host name for this home.
-
   # All other arguments come from the home home.
   config
 , ...
@@ -49,8 +48,9 @@ in
       DIRENV_LOG_FORMAT = "";
     };
     packages = with pkgs; [
-
       bambu-studio
+      internal.breezy-desktop
+      internal.xr-linux-driver
       internal.tabby
       internal.waveterm
       patch-discord
@@ -74,6 +74,23 @@ in
       protonvpn-gui
       internal.slint-calc
     ];
+  };
+  systemd.user.services = {
+    xreal-air-driver = {
+      Unit = {
+        Description = "XREAL Air user-space driver";
+        After = "network.target";
+      };
+      Service = {
+        Type = "simple";
+        Environment = "HOME=/home/sky";
+        ExecStart = "${pkgs.bash}/bin/bash -c '${pkgs.internal.xr-linux-driver}/bin/xrealAirLinuxDriver'";
+        Restart = "on-failure";
+      };
+      Install = {
+        WantedBy = [ "multi-user.target" ];
+      };
+    };
   };
   services.gpg-agent = {
     # enable = true;

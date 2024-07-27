@@ -19,17 +19,19 @@
 , # A boolean to determine whether this system is a virtual target using nixos-generators.
   systems
 , # An attribute map of your defined hosts.
-
   # All other arguments come from the system system.
   config
 , ...
-}:
-{
+}: {
+  services.desktopManager.cosmic.enable = true;
   hardware.openrazer = {
     enable = true;
     users = [ "sky" ];
   };
-
+  nix.settings = {
+    substituters = [ "https://cosmic.cachix.org/" ];
+    trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+  };
   users.users.sky.packages = [ pkgs.polychromatic ];
   madness.enable = true;
   internal = {
@@ -40,7 +42,10 @@
       nh.enable = true;
     };
     virtualization.docker.enable = true;
-    desktop.gnome.enable = true;
+    desktop.gnome = {
+      enable = true;
+      xr = true;
+    };
     networking.asWireguard.enable = true;
     disko.impermanence = {
       enable = true;
@@ -71,18 +76,16 @@
     virtual = true; # doesn't change the immediate render yet, but makes the network-centric view a little more readable
     type = "wireguard"; # changes the icon
   };
-  services.wordpress.sites."localhost" = {
-    plugins = {
-      inherit (pkgs.internal) wpgraphql;
-    };
-  };
+  # services.wordpress.sites."localhost" = {
+  #   plugins = {
+  #     inherit (pkgs.internal) wpgraphql;
+  #   };
+  # };
 
   environment.systemPackages = with pkgs; [
     inputs.agenix.packages.x86_64-linux.default
     age-plugin-yubikey
   ];
-
-
 
   services = {
     tailscale.enable = true;
@@ -96,8 +99,6 @@
     '';
     zsh.enable = true;
     # noisetorch.enable = true;
-
-
   };
   networking = {
     # dhcpcd.enable = false;
@@ -115,8 +116,5 @@
     };
   };
 
-
-
   system.stateVersion = "23.11";
 }
-

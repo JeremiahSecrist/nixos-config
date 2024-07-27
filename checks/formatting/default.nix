@@ -1,4 +1,7 @@
-{ pkgs, lib, ... }:
+{ pkgs
+, lib
+, ...
+}:
 pkgs.runCommandLocal "check-formatting"
 {
   nativeBuildInputs = with pkgs; [

@@ -19,7 +19,6 @@
 , # A boolean to determine whether this system is a virtual target using nixos-generators.
   systems
 , # An attribute map of your defined hosts.
-
   # All other arguments come from the module system.
   config
 , ...
@@ -32,7 +31,6 @@ in
 {
   options.${namespace}.networking.asWireguard.enable = mkEnableOption "Enables mesh network from computerClub";
   config = mkIf config.${namespace}.networking.asWireguard.enable {
-
     networking.extraHosts = ''
       172.16.2.3 codex.cypress.local
       172.16.2.3 minetest.local

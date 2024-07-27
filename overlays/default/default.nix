@@ -1,8 +1,6 @@
-{ inputs, ... }:
-(final: prev:
+{ inputs, ... }: (final: prev:
 let
   binaryName = "Discord";
-
 
   patch-krisp = prev.writeScript "patch-krisp" ''
     discord_version="${prev.discord.version}"
@@ -15,20 +13,25 @@ let
 in
 {
   inherit patch-krisp;
-  vesktop = (prev.vesktop.override {
+  vesktop = prev.vesktop.override {
     withSystemVencord = false;
+  };
+
+  alejandra = prev.alejandra.overrideAttrs (pFinal: pPrev: {
+    # Removes annoying ads in CLI
+    patches = [ ./no-ads.patch ];
   });
 
-
-
-
-  gnome = prev.gnome.overrideScope (gfinal: gprev: {
-    gnome-keyring = gprev.gnome-keyring.overrideAttrs (oldAttrs: {
-      configureFlags = oldAttrs.configureFlags or [ ] ++ [
+  # gnome = prev.gnome.overrideScope (gfinal: gprev: {
+  gnome-keyring = prev.gnome-keyring.overrideAttrs (oldAttrs: {
+    configureFlags =
+      oldAttrs.configureFlags
+        or [ ]
+      ++ [
         "--disable-ssh-agent"
       ];
-    });
   });
+  # });
   tpm2-pkcs11 = prev.tpm2-pkcs11.override { fapiSupport = false; };
   patch-discord = prev.discord.overrideAttrs (previousAttrs: {
     postInstall =
