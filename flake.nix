@@ -11,6 +11,7 @@
     madness.url = "github:antithesishq/madness";
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.637149.tar.gz";
     nixos-hardware.url = "https://flakehub.com/f/NixOS/nixos-hardware/0.1.*.tar.gz";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -77,7 +78,7 @@
         topology = import inputs.nix-topology {
           pkgs = channels.nixpkgs;
           modules = [
-            { inherit (inputs.self) nixosConfigurations; }
+            {inherit (inputs.self) nixosConfigurations;}
             ./topology.nix
           ];
         };

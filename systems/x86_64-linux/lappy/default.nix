@@ -34,6 +34,9 @@
   };
   users.users.sky.packages = [ pkgs.polychromatic ];
   madness.enable = true;
+  fonts.packages = with pkgs; [
+    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
+  ];
   internal = {
     roles = {
       gaming.enable = true;

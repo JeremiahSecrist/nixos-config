@@ -44,13 +44,15 @@ in
       };
     };
     sessionVariables = {
-      EDITOR = "hx";
+      EDITOR = "lunarvim";
       DIRENV_LOG_FORMAT = "";
     };
     packages = with pkgs; [
+      lazygit
+      lunarvim
       bambu-studio
       internal.breezy-desktop
-      internal.xr-linux-driver
+      # internal.xr-linux-driver
       internal.tabby
       internal.waveterm
       patch-discord
@@ -75,23 +77,7 @@ in
       internal.slint-calc
     ];
   };
-  systemd.user.services = {
-    xreal-air-driver = {
-      Unit = {
-        Description = "XREAL Air user-space driver";
-        After = "network.target";
-      };
-      Service = {
-        Type = "simple";
-        Environment = "HOME=/home/sky";
-        ExecStart = "${pkgs.bash}/bin/bash -c '${pkgs.internal.xr-linux-driver}/bin/xrealAirLinuxDriver'";
-        Restart = "on-failure";
-      };
-      Install = {
-        WantedBy = [ "multi-user.target" ];
-      };
-    };
-  };
+  # xdg.configFile."nvim".source = ./files/nvim;
   services.gpg-agent = {
     # enable = true;
     enableSshSupport = true;
@@ -134,6 +120,11 @@ in
 
   programs = {
     vscode.enable = true;
+    neovim = {
+      # enable = true;
+      # package = pkgs.lunarvim;
+
+    };
     helix.enable = true;
     nix-index.enable = true;
     zoxide = {
