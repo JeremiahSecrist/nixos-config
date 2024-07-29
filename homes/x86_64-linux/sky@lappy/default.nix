@@ -53,7 +53,7 @@ in
       bambu-studio
       internal.breezy-desktop
       # internal.xr-linux-driver
-      internal.tabby
+      # internal.tabby
       internal.waveterm
       patch-discord
       vesktop
