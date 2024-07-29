@@ -78,7 +78,7 @@
         topology = import inputs.nix-topology {
           pkgs = channels.nixpkgs;
           modules = [
-            {inherit (inputs.self) nixosConfigurations;}
+            { inherit (inputs.self) nixosConfigurations; }
             ./topology.nix
           ];
         };
