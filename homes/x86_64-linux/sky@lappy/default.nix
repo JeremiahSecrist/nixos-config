@@ -48,6 +48,8 @@ in
       DIRENV_LOG_FORMAT = "";
     };
     packages = with pkgs; [
+
+      wl-clipboard
       lazygit
       lunarvim
       bambu-studio
